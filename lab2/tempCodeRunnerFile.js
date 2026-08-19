@@ -19,16 +19,6 @@ const addToCart = async (item) => {
   products.push(item);
   await saveCart(products);
 };
-const showCart =  () => {
-  console.log("showcart:");
-
-};
-const updateCart = () => {
-    console.log(updateCart);
-}
-const deleteFromcart = ()=>{
-    console.log(deleteFromcart);
-}
 
 const main = async () => {
   const cin = readline.createInterface({ input: stdin, output: stdout });
@@ -43,31 +33,17 @@ const main = async () => {
     choice = await cin.question("Enter your choice:");
     switch (Number(choice)) {
       case 1:
-        let data = await cin.question("enter id,name,price,qty:");
-        let p = data.split(",");
-        // console.table(p);
-        let q = p.map((item)=> item.trim());
-        // console.table(q);
-        let [id, name, price, qty]=q;
-        console.log(id, name, price, qty);
-        const product ={
-            id: Number (id),
-            name,
-            price: Number(price),
-            qty: Number(qty),
-        };
-        console.log (product);
-
-
+        await addToCart({ id: 101, name: "Mobile", price: 15000, qty: 3 });
+        console.log("add to cart");
         break;
       case 2:
-        showCart();
+        console.log("show cart items");
         break;
       case 3:
-        deleteFromcart();
+        console.log("remove items");
         break;
       case 4:
-        updateCart();
+        console.log("update quantity");
         break;
       case 5:
         console.log("See you later...😃");
